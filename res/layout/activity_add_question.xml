@@ -1,0 +1,158 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+   	android:background="@drawable/doribook2"
+   	android:onClick="removeFocusFromEditText">
+   	
+    <ScrollView
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent">   	
+    
+		<LinearLayout 
+		    android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+   	
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/question"/>
+
+    <EditText
+        android:id="@+id/questionView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:gravity="top"
+        android:inputType="textMultiLine|textCapSentences" 
+        android:background="@drawable/view_border"/>
+    
+            
+    <TextView 
+        android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="15dp"
+		android:layout_marginLeft="10dp"
+		android:text="@string/alternative_answers"
+		android:background="#7FFFFFFF"/>
+            
+	<LinearLayout
+	    android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+ 		android:layout_marginLeft="20dp"
+		android:orientation="horizontal"
+		android:gravity="center_vertical">
+			
+		<CheckBox
+		    android:id="@+id/checkA"
+	       	android:layout_width="wrap_content"
+	       	android:layout_height="wrap_content"
+	       	android:text="@string/alternative_a"
+	       	android:onClick="checkBoxClick"/>
+            
+    	<EditText 
+       		android:id="@+id/alternativ_a"
+		  	android:layout_width="fill_parent"
+		  	android:layout_height="wrap_content"
+		  	android:layout_marginLeft="20dp"
+			android:layout_marginRight="20dp"
+  			android:paddingLeft="5dp"
+		 	android:paddingRight="5dp"
+		  	android:gravity="top"
+		  	android:inputType="textMultiLine|textCapSentences" 
+		  	android:background="@drawable/view_border"/>
+	</LinearLayout>
+            
+	<LinearLayout
+	    android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+ 		android:layout_marginTop="5dp"
+ 		android:layout_marginLeft="20dp"
+		android:orientation="horizontal"
+		android:gravity="center_vertical">
+            
+        <CheckBox
+            android:id="@+id/checkB"
+     		android:layout_width="wrap_content"
+     		android:layout_height="wrap_content"
+     		android:text="@string/alternative_b"
+     		android:onClick="checkBoxClick"/>
+            
+        <EditText 
+            android:id="@+id/alternativ_b"
+   			android:layout_width="fill_parent"
+   			android:layout_height="wrap_content"
+   			android:layout_marginLeft="20dp"
+			android:layout_marginRight="20dp"
+	     	android:paddingLeft="5dp"
+	     	android:paddingRight="5dp"
+	     	android:gravity="top"
+	     	android:inputType="textMultiLine|textCapSentences" 
+	     	android:background="@drawable/view_border"/>
+	</LinearLayout>
+            
+	<LinearLayout
+	    android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+ 		android:layout_marginTop="5dp"
+ 		android:layout_marginLeft="20dp"
+		android:orientation="horizontal"
+		android:gravity="center_vertical">
+            
+        <CheckBox
+            android:id="@+id/checkC"
+     		android:layout_width="wrap_content"
+     		android:layout_height="wrap_content"
+	     	android:text="@string/alternative_c"
+	     	android:onClick="checkBoxClick"/>
+            
+       	<EditText
+       	    android:id="@+id/alternativ_c"
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+	    	android:layout_marginLeft="20dp"
+			android:layout_marginRight="20dp"
+  			android:paddingLeft="5dp"
+	    	android:paddingRight="5dp"
+	    	android:gravity="top"
+	    	android:inputType="textMultiLine|textCapSentences" 
+	    	android:background="@drawable/view_border"/>
+	</LinearLayout>
+            
+   	<LinearLayout
+   	    android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+ 		android:layout_marginTop="5dp"
+ 		android:layout_marginLeft="20dp"
+		android:orientation="horizontal"
+		android:gravity="center_vertical">
+            
+    	<CheckBox
+    	    android:id="@+id/checkD"
+	      	android:layout_width="wrap_content"
+	      	android:layout_height="wrap_content"
+	      	android:text="@string/alternative_d"
+	      	android:onClick="checkBoxClick"/>
+            
+      	<EditText
+      	    android:id="@+id/alternativ_d"
+		   	android:layout_width="fill_parent"
+		  	android:layout_height="wrap_content"
+		   	android:layout_marginLeft="20dp"
+			android:layout_marginRight="20dp"
+		   	android:paddingLeft="5dp"
+		   	android:paddingRight="5dp"
+		   	android:gravity="top"
+		   	android:inputType="textMultiLine|textCapSentences" 
+		   	android:background="@drawable/view_border"/>
+  	</LinearLayout>
+  	</LinearLayout>
+  	</ScrollView>
+</LinearLayout>

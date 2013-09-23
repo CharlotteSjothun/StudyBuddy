@@ -1,0 +1,107 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+   	android:background="@drawable/doribook2">
+   	
+	<ScrollView
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent">   	
+    
+		<LinearLayout 
+		    android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+			
+		    <RelativeLayout 
+		        android:layout_width="match_parent"
+		    	android:layout_height="wrap_content">	
+		        
+		        <TextView
+			   		android:id="@+id/numOfRightAndWrong"
+			        android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignParentLeft="true"
+					android:text=""
+					android:background="#7FFFFFFF"/>
+		        
+		        <TextView
+			   		android:id="@+id/numQuestionsLeft"
+			        android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignParentRight="true"
+					android:text="@string/questions_left"
+					android:background="#7FFFFFFF"/>
+		    </RelativeLayout>
+		  
+		    <TextView 
+		        android:id="@+id/take_the_test_question"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="10dp"
+		        android:layout_marginLeft="20dp"
+		        android:layout_marginRight="20dp"
+		        android:paddingLeft="5dp"
+		        android:paddingRight="5dp"
+		        android:text=""
+		        android:background="@drawable/view_border"/>
+			    
+		    <TextView 
+		        android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="15dp"
+				android:layout_marginLeft="20dp"
+				android:text="@string/alternative_info"
+				android:background="#7FFFFFFF"/>
+		    
+		    <Button 
+		        android:id="@+id/take_the_test_alternativ_a"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="20dp"
+				android:layout_marginRight="20dp"
+		        android:paddingLeft="5dp"
+		        android:paddingRight="5dp"
+		        android:background="@drawable/answer_button_state"
+		        android:onClick="clickAnswer"/>
+		        
+		    <Button 
+		        android:id="@+id/take_the_test_alternativ_b"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="5dp"
+		        android:layout_marginLeft="20dp"
+				android:layout_marginRight="20dp"
+		        android:paddingLeft="5dp"
+		        android:paddingRight="5dp"
+		        android:background="@drawable/answer_button_state"
+		        android:onClick="clickAnswer"/>
+		    
+		    <Button 
+		        android:id="@+id/take_the_test_alternativ_c"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="5dp"
+		        android:layout_marginLeft="20dp"
+				android:layout_marginRight="20dp"
+		        android:paddingLeft="5dp"
+		        android:paddingRight="5dp"
+		        android:background="@drawable/answer_button_state"
+		        android:onClick="clickAnswer"/>
+		    
+		    <Button 
+		        android:id="@+id/take_the_test_alternativ_d"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="5dp"
+		        android:layout_marginLeft="20dp"
+				android:layout_marginRight="20dp"
+		        android:layout_marginBottom="5dp"
+		        android:paddingLeft="5dp"
+		        android:paddingRight="5dp"
+		        android:background="@drawable/answer_button_state"
+		        android:onClick="clickAnswer"/>
+	    </LinearLayout>
+    </ScrollView>
+</LinearLayout>
