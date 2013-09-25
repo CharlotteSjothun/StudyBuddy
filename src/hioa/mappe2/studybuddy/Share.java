@@ -6,8 +6,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -278,7 +282,7 @@ public class Share extends Activity
     
     class UserDatabaseConnectionShare extends AsyncTask<String, String, String> 
 	{
-		//private final static String URL_SHARE = "http://student.iu.hio.no/~s180495/StudyBuddy/shareTest.php";
+		private final static String URL_SHARE = "http://student.iu.hio.no/~s180495/StudyBuddy/shareTest.php";
 		private final static String URL_DOWNLOAD = "http://student.iu.hio.no/~s180495/StudyBuddy/downloadTest.php";
 		private ProgressDialog pDialog = null;
 		private String message, keyword;
@@ -297,10 +301,6 @@ public class Share extends Activity
 			test = quiz;
 		}
 		
-		 
-        /**
-         * Before starting background thread Show Progress Dialog
-         * */
         @Override
         protected void onPreExecute() 
         {
@@ -366,6 +366,14 @@ public class Share extends Activity
     	            
     	            return getString(R.string.downloaded);
                 } 
+            	catch (UnsupportedEncodingException e) 
+    	        {
+    	        	return e.toString();
+    	        }
+            	catch (ClientProtocolException e) 
+    	        {
+    	        	return e.toString();
+    	        }
     			catch(IOException e)
     			{
     				return e.toString();
@@ -385,45 +393,43 @@ public class Share extends Activity
                 
                 if (test == null) return "En feil oppstod. Prøv på nytt!";
                 
-                return getString(R.string.unavailable);
-                /*
+                JSONObject jsonToSend = new JSONObject();
+                
             	try
-    			{
-            		List<JSONObject> jsonList = new ArrayList<JSONObject>();
-            		
-            		JSONObject jsonToSend = new JSONObject();
-            		jsonToSend.put("keyword", keyword);
-            		jsonToSend.put("username", username);
-            		jsonToSend.put("testName", test.getFolderOrTestName());
-            		//params.add(new BasicNameValuePair("username", username));
-                    //params.add(new BasicNameValuePair("testName", test.getFolderOrTestName()));
-            		jsonList.add(jsonToSend);
+    			{            		
+            		JSONObject userValues = new JSONObject();
+            		userValues.put("keyword", keyword);
+            		userValues.put("username", username);
+            		userValues.put("testName", test.getFolderOrTestName());
+            		jsonToSend.put("userValues", userValues);
             		
                     ArrayList<MultipleChoiceQuestion> questions = test.getQuestions();
                     Iterator<MultipleChoiceQuestion> iter = questions.iterator();
+                    
+                    JSONObject jsonQuestions = new JSONObject();
                     
                     while (iter.hasNext())
                     {
     	                MultipleChoiceQuestion question = iter.next();
     	                
-    	                JSONObject jsonToSend2 = new JSONObject();
+    	                JSONObject jsonQuestion = new JSONObject();
     	                
-    	                jsonToSend2.put("questionText", question.getQuestion());
-    	                jsonToSend2.put("alt1Text", question.getAnswer1());
-    	                jsonToSend2.put("alt2Text", question.getAnswer2());
-    	                jsonToSend2.put("alt3Text", question.getAnswer3());
-    	                jsonToSend2.put("alt4Text", question.getAnswer4());
-    	                jsonToSend2.put("answer", question.getRightAnswer() + "");
+    	                jsonQuestion.put("questionText", question.getQuestion());
+    	                jsonQuestion.put("alt1Text", question.getAnswer1());
+    	                jsonQuestion.put("alt2Text", question.getAnswer2());
+    	                jsonQuestion.put("alt3Text", question.getAnswer3());
+    	                jsonQuestion.put("alt4Text", question.getAnswer4());
+    	                jsonQuestion.put("answer", question.getRightAnswer() + "");
     	                
-    	                jsonList.add(jsonToSend2);
+    	                jsonQuestions.put("question", jsonQuestion);
                    	}
+                    
+                    jsonToSend.put("questions", jsonQuestions);
             		
-    				JSONObject json = jsonParser.makeHttpRequestJson(URL_SHARE, "POST", jsonList);
+    				JSONObject json = jsonParser.makeHttpRequestJson(URL_SHARE, "POST", jsonToSend);
     				
     				if (json == null) return "json er null";
     				
-    				return json.toString();
-    			
                     int success = json.getInt("success");
      
                     if (success == 1) 
@@ -436,12 +442,17 @@ public class Share extends Activity
                     {
                     	String errorFromSQL = json.getString("message");
                     	
-                    	if (errorFromSQL.equals("1062"))
-                    		return getString(R.string.username_exist);
-                    	else
-                    		return errorFromSQL;
+                    	return errorFromSQL;
                     }
                 } 
+            	catch (UnsupportedEncodingException e) 
+    	        {
+    	        	return e.toString();
+    	        }
+            	catch (ClientProtocolException e) 
+    	        {
+    	        	return e.toString();
+    	        }
     			catch(IOException e)
     			{
     				return e.toString();
@@ -449,7 +460,7 @@ public class Share extends Activity
                 catch (JSONException e)
                 {
                     e.printStackTrace();
-                }*/
+                }
             }
  
             return null;

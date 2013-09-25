@@ -1,8 +1,11 @@
 package hioa.mappe2.studybuddy;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -93,10 +96,6 @@ public class LogIn extends Activity
 			keyword = keywordDB;
 		}		
 		
-		 
-        /**
-         * Before starting background thread Show Progress Dialog
-         * */
         @Override
         protected void onPreExecute() 
         {
@@ -146,7 +145,15 @@ public class LogIn extends Activity
                 	else
                 		return errorFromSQL;
                 }
-            } 
+            }
+			catch (UnsupportedEncodingException e) 
+	        {
+	        	return e.toString();
+	        }
+	        catch (ClientProtocolException e) 
+	        {
+	        	return e.toString();
+	        }
 			catch(IOException e)
 			{
 				return e.toString();
