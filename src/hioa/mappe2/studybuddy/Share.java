@@ -408,6 +408,8 @@ public class Share extends Activity
                     
                     JSONObject jsonQuestions = new JSONObject();
                     
+                    int i = 0;
+                    
                     while (iter.hasNext())
                     {
     	                MultipleChoiceQuestion question = iter.next();
@@ -421,7 +423,7 @@ public class Share extends Activity
     	                jsonQuestion.put("alt4Text", question.getAnswer4());
     	                jsonQuestion.put("answer", question.getRightAnswer() + "");
     	                
-    	                jsonQuestions.put("question", jsonQuestion);
+    	                jsonQuestions.put("question" + i++, jsonQuestion);
                    	}
                     
                     jsonToSend.put("questions", jsonQuestions);
